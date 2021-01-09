@@ -13,7 +13,14 @@ import java.lang.UnsupportedOperationException
 
 class MainController : Controller() {
 
-    private val allAnimals = mutableListOf<Animal>()
+    private val allAnimals = mutableListOf(
+        Animal.Arachnid(1, "Tarantula", Size.SMALL, true),
+        Animal.Bird(2, "Chicken", Size.MEDIUM, false),
+        Animal.Fish(3, "Carp", Size.MEDIUM, false),
+        Animal.Insect(4, "Fly", Size.TINY, true),
+        Animal.Mammal(5, "Elephant", Size.ENORMOUS, false),
+        Animal.Reptile(6, "Snake", Size.MEDIUM, false)
+    )
     val filteredAnimals: ObservableList<Animal> = FXCollections.observableArrayList(allAnimals)
 
     companion object {
@@ -32,6 +39,14 @@ class MainController : Controller() {
     val abstractActionText: StringProperty = SimpleStringProperty("No abstract action yet")
     val interfaceActionText: StringProperty = SimpleStringProperty("No interface action yet")
 
+    fun clearAbstractActionText() {
+        abstractActionText.set("No abstract action")
+    }
+
+    fun clearInterfaceActionText() {
+        interfaceActionText.set("No interface action")
+    }
+
     fun runAbstractEatFunction() {
         var resultText = ""
         filteredAnimals.forEach { animal ->
@@ -40,7 +55,7 @@ class MainController : Controller() {
         abstractActionText.set(resultText)
     }
 
-    fun runInterfaceSwimFunction(){
+    fun runInterfaceSwimFunction() {
         var resultText = ""
         filteredAnimals.filterIsInstance(Swimmable::class.java)
             .forEach { swimmableAnimal ->

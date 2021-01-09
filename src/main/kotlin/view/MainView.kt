@@ -169,6 +169,11 @@ class MainView : View("Projekt - Programowanie Objektowe") {
                     id = "abstractActionText"
                     bind(controller.abstractActionText)
                 }
+                button("Clean"){
+                    setOnMouseClicked {
+                        controller.clearAbstractActionText()
+                    }
+                }
             }
             vbox {
                 spacing = Style.mediumSpacing
@@ -185,6 +190,11 @@ class MainView : View("Projekt - Programowanie Objektowe") {
                 text {
                     id = "interfaceActionText"
                     bind(controller.interfaceActionText)
+                }
+                button("Clean"){
+                    setOnMouseClicked {
+                        controller.clearInterfaceActionText()
+                    }
                 }
             }
         }
